@@ -19,7 +19,7 @@ First, you need to get the domain's XRD file.  In this case, example.com's XRD f
 
 ===Try DNS first===
 
-On the domain, *example.com*, do a DNS lookup ..... *TODO: complete this section.  SRV doesn't quite work, and TXT is hacky*
+On the domain, *example.com*, do a DNS lookup ..... *TODO: complete this section.  SRV doesn't quite work, and TXT is hacky.  See DnsLookup page.*
 
 ===Try well-known HTTP location if DNS failed===
 
