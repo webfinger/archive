@@ -1,0 +1,56 @@
+#summary the WebFinger protocol
+
+= WARNING: DRAFT =
+
+This is a draft.  A ~dozen of us have discussed this at various times and largely agreed on everything, so it's time to start writing it down.
+
+= Protocol =
+
+The goal of the protocol is to get an [XrdFiles XRD] XML file describing a user's public metadata from that user's email address.
+
+==Split the email address=
+
+Given an email address, *foo@example.com*, split the email address into two parts, the local part (foo) and the domain (example.com)
+
+==Get the domain XRD file==
+
+First, you need to get the domain's XRD file.  In this case, example.com's XRD file.  You try to look that up first using DNS, then falling back to a well-known HTTP URL.
+
+===Try DNS first===
+
+On the domain, *example.com*, do a DNS lookup ..... *TODO: complete this section.  SRV doesn't quite work, and TXT is hacky*
+
+===Try well-known HTTP location if DNS failed===
+
+If the DNS discovery failed, fallback to HTTP-based domain XRD lookup, using a _well-known location_:
+
+{{{
+GET /;wellknown/host-meta HTTP/1.1
+Host: example.com
+}}}
+
+The world has enough well-known URLs (`/favicon.ico`, `/crossdomain.xml`, `/robots.txt`), and we felt dirty adding another, so the `/;wellknown/` prefix is the virtual directory where we hope future specs add their well-known URLs too.
+
+==Verify the XRD file's signature===
+
+If the XRD file is signed by the domain, check the signature.
+
+If it's not signed and either it's ever been signed before, or it's a big company's site which you expect it to be signed from, be afraid.  Abort the process.  Probably MITM.
+
+==Look for the XRD Link-Pattern==
+
+Look for the Link-Pattern in the domain XRD file.  The Link-Pattern is a template to convert the email address into a URL.
+
+e.g.
+
+{{{
+http://meta.example.org/?q={%uri}
+}}}
+
+==Get user's XRD file==
+
+Expand the Link-Pattern template with the full email address (not just the local, user part), and that's the user's XRD file.
+
+=Appendix=
+
+Respect and use DNS TTLs and HTTP caching/expiry headers.
