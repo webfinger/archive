@@ -7,7 +7,7 @@ This is a draft.  A ~dozen of us have discussed this at various times and largel
 
 = Protocol =
 
-The goal of the protocol is to get an [XrdFiles XRD] XML file describing a user's public metadata from that user's email address.
+The goal of the protocol is to get an [XrdFiles XRD] XML or HTML Microformats file describing a user's public metadata from that user's email address.
 
 ==Split the email address=
 
@@ -17,7 +17,7 @@ Given an email address, *foo@example.com*, split the email address into two part
 
 First, you need to get the domain's XRD file.  In this case, example.com's XRD file.  You try to look that up first using DNS, then falling back to a well-known HTTP URL.
 
-===Try DNS first===
+===Try DNS first (if you're feeling fancy)===
 
 On the domain, *example.com*, do a DNS lookup ..... *TODO: complete this section.  SRV doesn't quite work, and TXT is hacky.  See DnsLookup page.*
 
@@ -32,11 +32,15 @@ Host: example.com
 
 The world has enough well-known URLs (`/favicon.ico`, `/crossdomain.xml`, `/robots.txt`), and we felt dirty adding another, so the `/;wellknown/` prefix is the virtual directory where we hope future specs add their well-known URLs too.
 
+Comment (blaine): the semicolon in /;wellknown/ will put off people who are just putting static files in a directory. Rails' use of semicolons seemed like a good idea at the time, but it's probably always doomed to failure.
+
 ==Verify the XRD file's signature===
 
 If the XRD file is signed by the domain, check the signature.
 
 If it's not signed and either it's ever been signed before, or it's a big company's site which you expect it to be signed from, be afraid.  Abort the process.  Probably MITM.
+
+Alternatively, request the XRD over SSL, and verify the SSL certificate. This avoids having to do an out-of-band signature process.
 
 ==Look for the XRD Link-Pattern==
 
@@ -46,6 +50,20 @@ e.g.
 
 {{{
 http://meta.example.org/?q={%uri}
+}}}
+
+Comment (blaine): is there a way we can define just a Link (i.e., not a Link-Pattern) that always has a single known parameter, as defined by a specific rel tag?
+
+e.g., if the link in an HTML header is:
+
+{{{
+<link rel='webfinger-query' href="http://meta.example.org/webfinger' />
+}}}
+
+then implicit is an 'email' or 'q' parameter that gets added, like so:
+
+{{{
+http://meta.example.org/webfinger?email=bob%40example.org
 }}}
 
 ==Get user's XRD file==
