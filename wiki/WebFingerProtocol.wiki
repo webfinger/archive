@@ -7,7 +7,7 @@ This is a draft.  A ~dozen of us have discussed this at various times and largel
 
 = Protocol =
 
-The goal of the protocol is to get an [XrdFiles XRD] XML <s>or HTML Microformats</s> file describing a user's public metadata from that user's email address.
+The goal of the protocol is to get an [XrdFiles XRD] XML file describing how to find a user's public metadata from that user's email address.
 
 ==Split the email address=
 
