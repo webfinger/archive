@@ -26,13 +26,11 @@ On the domain, *example.com*, do a DNS lookup ..... *TODO: complete this section
 If the DNS discovery failed, fallback to HTTP-based domain XRD lookup, using a _well-known location_:
 
 {{{
-GET /;wellknown/host-meta HTTP/1.1
+GET /,wellknown/host-meta HTTP/1.1
 Host: example.com
 }}}
 
-The world has enough well-known URLs (`/favicon.ico`, `/crossdomain.xml`, `/robots.txt`), and we felt dirty adding another, so the `/;wellknown/` prefix is the virtual directory where we hope future specs add their well-known URLs too.
-
-Comment (blaine): the semicolon in /;wellknown/ will put off people who are just putting static files in a directory. Rails' use of semicolons seemed like a good idea at the time, but it's probably always doomed to failure.
+The world has enough well-known URLs (`/favicon.ico`, `/crossdomain.xml`, `/robots.txt`), and we felt dirty adding another, so the `/,wellknown/` prefix is the virtual directory where we hope future specs add their well-known URLs too.
 
 ==Verify the XRD file's signature===
 
