@@ -30,7 +30,7 @@ GET /.well-known/host-meta HTTP/1.1
 Host: example.com
 }}}
 
-The world has enough well-known URLs (`/favicon.ico`, `/crossdomain.xml`, `/robots.txt`), and we felt dirty adding another, so the `/,wellknown/` prefix is the virtual directory where we hope future specs add their well-known URLs too.
+The world has enough well-known URLs (`/favicon.ico`, `/crossdomain.xml`, `/robots.txt`), and we felt dirty adding another, so the `/.well-known/` prefix (see [http://www.ietf.org/id/draft-nottingham-site-meta-02.txt draft-nottingham-site-meta-02]) is the virtual directory where we hope future specs add their well-known URLs too.
 
 ==Verify the XRD file's signature===
 
