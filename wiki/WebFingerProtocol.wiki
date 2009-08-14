@@ -26,7 +26,7 @@ On the domain, *example.com*, do a DNS lookup ..... *TODO: complete this section
 If the DNS discovery failed, fallback to HTTP-based domain XRD lookup, using a _well-known location_:
 
 {{{
-GET /,wellknown/host-meta HTTP/1.1
+GET /.well-known/host-meta HTTP/1.1
 Host: example.com
 }}}
 
