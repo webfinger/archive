@@ -84,7 +84,7 @@ matches the acct: URI you started with:
 
 Note: Need a big security section describing all the things that need checking.
 
-You'll get back an XRD file containing the _Link_s that you're looking for.  Look for the link(s) with
+You'll get back an XRD file containing the _Link_ (s) that you're looking for.  Look for the link(s) with
 the rel value you need.  Those are the services you're trying to discover for acct:foo@example.com.
 
 (See [http://www.oasis-open.org/committees/download.php/35678/xrd-1.0-wd11.html#element.link xrd-1.0-wd11].)
