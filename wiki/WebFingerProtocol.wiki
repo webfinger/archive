@@ -43,7 +43,7 @@ If the XRD file is signed by the domain and wasn't retrieved via SSL, check for 
 If it's not signed and either it's ever been signed before, or it's a big company's site which you expect it to be signed from, 
 be afraid.  Abort the process.  Probably MITM.  You can fall back to manual discovery (asking the user for info).
 
-Also, once you verify the signature, double check that the XRD <Host> element matches your host string - e.g., example.com.
+Also, once you verify the signature, double check that the XRD _Host_ element matches your host string - e.g., example.com.
 This keeps example.com from stealing someone else's host-meta file and passing it off as their own.
 
 ==Look for the XRD Link-Pattern==
@@ -77,7 +77,7 @@ later.)
 
 You'll get back an XRD file containing the Links that you're looking for.
 
-Verify that the XRD you get in the end has a <Subject> element that matches the acct: URI you started with:
+Verify that the XRD you get in the end has a _Subject_ element that matches the acct: URI you started with:
 
 {{{
 <Subject>acct:foo@example.com</Subject>
