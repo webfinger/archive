@@ -10,6 +10,8 @@ This is a draft, with updates based on various messages and blog posts along wit
 The goal of the protocol is to get an [XrdFiles XRD] XML file describing how to find a user's public metadata from that user's 
 email address or email address like identifier.  The following describes the steps in the Webfinger protocol specifically,
 and ignores the options in the underlying protocols that don't apply (mostly the Link: header). 
+The [Requirements] page gives some background on the requirements that went into
+the design of the WebFinger protocol.
 
 ==Normalize and parse the email address==
 
@@ -19,8 +21,8 @@ Grab the host of *acct:foo@example.com* -- in this case, example.com.
 ==Get the domain's host-meta XRD file==
 
 First, you need to get the host's host-meta XRD file.  In this case, example.com's.  This is available at 
-https://example.com/.well-known/host-meta.  If there's no response to an SSL connection there, 
-try http://example.com/.well-known/host-meta.  Follow 3xx redirects; remember if anything _wasn't_ retrieved via SSL
+`https://example.com/.well-known/host-meta`.  If there's no response to an SSL connection there, 
+try `http://example.com/.well-known/host-meta`.  Follow 3xx redirects; remember if anything _wasn't_ retrieved via SSL
 connections with valid certificates.
 
 Note that this needs to be done only the first time for each host-meta, after that you can cache the results using standard
