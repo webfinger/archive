@@ -7,7 +7,7 @@ Here is a list of common link relations commonly found in a user's XRD file:
 || *Link Relation* || *Source* ||
 || describedby || [http://tools.ietf.org/html/draft-nottingham-http-link-header-07#section-6.2.2 Link Relation Registry] ||
 || http://portablecontacts.net/spec/1.0 || [http://portablecontacts.net/draft-spec.html Portable Contacts] ||
-|| http://webfinger.net/rel/profile-page || *???* ||
+|| http://webfinger.net/rel/profile-page || WebFingerProfilePage ||
 || http://microformats.org/profile/hcard || [http://microformats.org/profile/hcard hCard] ||
 || http://gmpg.org/xfn/11 || [http://gmpg.org/xfn/ XHTML Friends Network] ||
 || http://specs.openid.net/auth/2.0/provider || [http://openid.net/specs/openid-authentication-2_0.html Open ID 2.0 Provider] ||
